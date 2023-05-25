@@ -6,7 +6,7 @@
 }
 
 .cabecalho {
-    background-image: linear-gradient(#05132a,#000000);
+    background-image: linear-gradient(#5B0604,#000000);
     color: #FFFFFF;
     display: flex;
     justify-content: space-around;
@@ -26,79 +26,7 @@
     padding-bottom: 5%;
     color: #FFFFFF;
 }
-.apresentacao-equipe{
-    width: 500px;
-    border: 1;
-    font-size: 22px;
-    text-align: justify;
-    color: #FFFFFF;
-}
-.textos-equipe{
-padding-left: 20%;
-}
-.imagem-equipe{
-    width: 20%;
-    margin-right: 20%;
-    margin-left:10%;
-    border-radius: 5%;
-}
-#parte-equipe{
-    background: #FFFFFF url("img/pattern.jpg");
-    padding-top: 3%;
-    padding-bottom: 3%;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.title-integrantes{
-    text-align: center;
-    font-size: 40px;
-}
-#integrantes{
-    padding-top: 3%;
-    background-image: linear-gradient(#000000,#05132a);
-    color:#FFFFFF;
-
-}
-.integrantes-indivi-info{
-    padding-top: 1%;
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25% ;
-}
-.integrantes-indivi-1{
-    width: 80%;
-    display: flex;
-    padding: 5%;
-    border-right: 5px solid white;
-    margin: 5%;
-    
-}
-.integrantes-indivi-2{
-    width: 80%;
-    display: flex;
-    padding: 5%;
-    margin: 5%;
-    
-}
-.foto-indivi{
-    width: 40%;
-    border-radius: 10%;
-}
-.integrantes-indivi-nome{
-    text-align: center;
-}
-.integrantes-indivi-textos{
-    font-size: 10px;
-    padding-left: 5%;
-    text-align: justify;
-    width: 100%;
-}
-
-.img-link{
-    width:90%;
-    padding:0%;
-}
 .links{
     width:30%;
     padding-top: 2.5%;
@@ -142,7 +70,7 @@ li a,
 
 li a:hover,
 .dropdown:hover .dropbtn {
-    color: #0500A5;
+    color: #ED0C0C;
 }
 
 li.dropdown {
@@ -154,7 +82,7 @@ li.dropdown {
     text-align: center;
     display: none;
     position: absolute;
-    background-color: #05132a;
+    background-color: #000000;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
@@ -177,4 +105,35 @@ li.dropdown {
 }
 .texto-cabecalho{
     font-size: 23px;
+}
+
+#Trab1 {
+    background-color:#5B0604;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+#Trab2 {
+    background-color:#490504;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+#Trab3 {
+    background-color: #5B0604;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.corpo-titulo{
+    text-align: center;
 }
