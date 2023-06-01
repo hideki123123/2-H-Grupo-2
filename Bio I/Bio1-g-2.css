@@ -6,7 +6,7 @@
 }
 
 .cabecalho {
-    background-image: linear-gradient(#5B0604,#000000);
+    background-image: linear-gradient(#0BA30F,#000000);
     color: #FFFFFF;
     display: flex;
     justify-content: space-around;
@@ -72,7 +72,7 @@ li a,
 
 li a:hover,
 .dropdown:hover .dropbtn {
-    color: #ED0C0C;
+    color: #2CCD30;
 }
 
 li.dropdown {
@@ -111,8 +111,8 @@ li.dropdown {
 }
 
 #Trab1 {
-    background-color:#5B0604;
-    color: white;
+    background-color:#0BA30F;
+    color: black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -120,8 +120,8 @@ li.dropdown {
 }
 
 #Trab2 {
-    background-color:#490504;
-    color: white;
+    background-color:#0B6F0D;
+    color: black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -129,8 +129,8 @@ li.dropdown {
 }
 
 #Trab3 {
-    background-color: #5B0604;
-    color: white;
+    background-color: #0BA30F;
+    color: black;
     display: flex;
     justify-content: center;
     align-items: center;
