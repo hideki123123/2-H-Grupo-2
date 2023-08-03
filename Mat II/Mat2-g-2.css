@@ -4,6 +4,9 @@
     font-family: 'Noto Serif', serif;
     
 }
+@media only screen and (max-device-width: 900px) {
+    /* .menu { width:100%; } */
+    }
 
 .cabecalho {
     background-image: linear-gradient(#36A5B2,#000000);
