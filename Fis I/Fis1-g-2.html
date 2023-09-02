@@ -28,28 +28,282 @@
         </ul>
     </header>
     <section id="Trab1">
-        <div class="corpo-div-conteudo">
-            <h2 class="corpo-titulo"> Trabalho 1 </h2>
-            <br>
-            <p class="paragrafo-um">Aqui virá a introdução do seu trabalho.</p>
-            <br>
-            <p class="paragrafo-um">Aqui virá o desenvolvimento do seu trabalho.</p>
-            <br>
-            <p class="paragrafo-um">Aqui virá a conclusão do seu trabalho.</p>
-        </div>
-        <img class="foto-corpo" src="../img/g-foto.png" alt="foto do corpo">
+        <h2 class="corpo-titulo"> Semáforo </h2>
+        <section class="slider">
+         <input name='slide' type="radio" checked >
+         <input name='slide' type="radio" >
+         <input name='slide' type="radio">
+         <div class="slider-content">
+             <div class="slider-item">
+                 <a href="../vid/VID_20230823_141320.mp4" title="Download movie"><img class="img_trab2" src="../img/trab1.png" alt="foto do corpo"></a>
+             </div>
+             <div class="slider-item">
+              <div class="orgtrab2">
+                <div class="code-box">
+                    <pre>
+                         <code>
+                          Algoritmo de montagem
+
+                          Conecte o GND do arduino aos segmentos negativos da protoboard;
+                          Conecte o 5V do arduino aos segmentos positivos da protoboard;
+                          Coloque a barra de leds no meio da protoboard;
+                          Conecte o ânodo de 3 leds da barra de leds com resistores a um dos segmentos negativos da protoboard com resistores de 150Ω;
+                          Conecte o cátodo dos 3 leds as respectivas portas digitais do arduino 6,7,8;
+                          Coloque um push button no centro da protoboard;
+                          Conecte uma das pernas do push button no segmento positivo da protoboard;
+                          Conecte a perna oposta a perna alimentada com 5V ao segmento negativo da protoboard com um resistor de 150Ω;
+                          Conecte a mesma perna da ação anterior a porta digital 4 do arduino;
+                          Coloque o display de 4 digitos na protoboard;
+                          Conecte o GND do display ao segmento negativo da protoboard;
+                          Conecte o VIN do display ao segmento positivo da protoboard;
+                          Conecte o CLK do display a porta analógica 4 do arduino;
+                          Conecte o DIO do display a porta analógica 5 do arduino;
+                          Coloque dois led vermelhos, um led amarelo e dois leds verdes na protoboard;
+                          Conecte o ânodo de todos os leds no segmento negativo da protoboard;
+                          Conecte um resistor de 150Ω no cátodo de cada led;  
+                          Conecte um led vermelho, um amarelo e um verde nas respectivas portas digitais do arduino 13, 12 e 11(Passando pelo resistor);
+                          Conecte um led vermelho e um led verde nas respectivas portas digitais do arduino 10 e 9(Passando pelo resistor);
+                          Coloque um buzzer na protoboard;
+                          Conecte o GND do buzzer no segmento negativo da protoboard;
+                          Conecte a entrada do buzzer na porta digital 5 do arduino;
+                            </code>
+                        </pre>
+                </div>
+            </div>
+             </div>
+             <div class="slider-item">
+                 <div class="orgtrab2">
+                 <div class="code-box">
+                     <pre>
+                          <code>
+                                #include &lt;TM1637Display.h&gt;
+                                #define CLK A4
+                                #define DIO A5
+                                #define B 4
+                                
+                                #define Ba 8
+                                #define Bb 7
+                                #define Bc 6
+                                
+                                int R_C = 13;
+                                int Y_C = 12;
+                                int G_C = 11;
+                                int R_P = 10;
+                                int G_P = 9;
+                                
+                                int var = 0;
+                                
+                                TM1637Display display(CLK, DIO);
+                                #define buzzer 5
+                                
+                                void A_C(){
+                                    digitalWrite(G_C, HIGH);
+                                    digitalWrite(R_P, HIGH);
+                                    
+                                    digitalWrite(Y_C, LOW);
+                                    digitalWrite(R_C, LOW);
+                                    digitalWrite(G_P, LOW);
+                                    
+                                    digitalWrite(Ba, LOW);
+                                    digitalWrite(Bb, LOW);
+                                    digitalWrite(Bc, LOW);
+                                    
+                                    display.showNumberDec(0, false);
+                                    noTone(buzzer);
+                                    
+                                }
+                                  
+                                
+                                void setup() {
+                                  display.setBrightness(15);
+                                  pinMode(buzzer,OUTPUT);
+                                  noTone(buzzer);
+                                  
+                                  pinMode(R_C,OUTPUT);
+                                  pinMode(Y_C,OUTPUT);
+                                  pinMode(G_C,OUTPUT);
+                                  pinMode(R_P,OUTPUT);
+                                  pinMode(G_P,OUTPUT);
+                                  
+                                }
+                                
+                                void loop() {
+                                  int E = digitalRead(B);
+                                  if (E == 1){
+                                    if (var == 0){
+                                      var = 1;
+                                    }
+                                    else{
+                                      var = 0;
+                                    }
+                                  }
+                                
+                                  
+                                  if(var == 1){
+                                    tone(buzzer, 1000, 1000);
+                                    delay(100);
+                                    noTone(buzzer);
+                                    digitalWrite(Y_C, HIGH);
+                                    digitalWrite(G_C, LOW);
+                                    delay(5000);
+                                    digitalWrite(Y_C, LOW);
+                                    digitalWrite(R_C, HIGH);
+                                    digitalWrite(R_P, LOW);
+                                    digitalWrite(G_P,HIGH);
+                                    display.showNumberDec(0006, false);
+                                    digitalWrite(Ba, HIGH);
+                                    digitalWrite(Bb, HIGH);
+                                    digitalWrite(Bc, HIGH);
+                                    delay(1000);
+                                    display.showNumberDec(0005, false);
+                                    delay(1000);
+                                    display.showNumberDec(0004, false);
+                                    digitalWrite(Bc, LOW);
+                                    delay(1000);
+                                    display.showNumberDec(0003, false);
+                                    delay(1000);
+                                    display.showNumberDec(0002, false);
+                                    digitalWrite(Bb, LOW);
+                                    delay(1000);
+                                    display.showNumberDec(0001, false);
+                                    delay(1000);
+                                    display.showNumberDec(0000, false);
+                                    digitalWrite(Ba, LOW);
+                                    tone(buzzer, 1000, 1000);
+                                    delay(100);
+                                    noTone(buzzer);
+                                    A_C();
+                                    var = 0;
+                                
+                                  }
+                                  else{
+                                    A_C();
+                                  }
+                                }
+                             </code>
+                         </pre>
+                 </div>
+             </div>
+             </div>
+           
+             </div>
+         </section>
     </section>
     <section id="Trab2">
-        <div class="corpo-div-conteudo">
-            <h2 class="corpo-titulo"> Trabalho 2 </h2>
-            <br>
-            <p class="paragrafo-um">Aqui virá a introdução do seu trabalho.</p>
-            <br>
-            <p class="paragrafo-um">Aqui virá o desenvolvimento do seu trabalho.</p>
-            <br>
-            <p class="paragrafo-um">Aqui virá a conclusão do seu trabalho.</p>    
-        </div>
-        <img class="foto-corpo" src="../img/g-foto.png" alt="foto do corpo">
+       <h2 class="corpo-titulo"> Alarme de segurança </h2>
+       <section class="slider">
+        <input name='slide' type="radio" checked >
+        <input name='slide' type="radio" >
+        <input name='slide' type="radio">
+        
+    
+        <div class="slider-content">
+            <div class="slider-item">
+                <a href="../vid/VID_20230823_165701.mp4" title="Download movie"><img class="img_trab2" src="../img/trab2.png" alt="foto do corpo"></a>
+            </div>
+            <div class="slider-item">
+              <div class="orgtrab2">
+                <div class="code-box">
+                    <pre>
+                         <code>
+                          Algoritmo de montagem
+                          
+                          Conecte o GND do arduino aos segmentos negativos da protoboard;
+                          Conecte o 5V do arduino aos segmentos positivos da protoboard;
+                          Coloque três push button no centro da protoboard;
+                          Conecte uma das pernas de todos os push buttons no segmento positivo da protoboard;
+                          Conecte a perna oposta a perna alimentada com 5V, ao segmento negativo da protoboard com um resistor de 150Ω, faça isso com todos os push buttons;
+                          Conecte a mesma perna da ação anterior de todos os push buttons as respectivas portas digitais do arduino 12, 11 e 10;
+                          Coloque o display de 4 digitos na protoboard;
+                          Conecte o GND do display ao segmento negativo da protoboard;
+                          Conecte o VIN do display ao segmento positivo da protoboard;
+                          Conecte o CLK do display a porta analógica 4 do arduino;
+                          Conecte o DIO do display a porta analógica 5 do arduino;
+                          Coloque um buzzer na protoboard;
+                          Conecte o GND do buzzer no segmento negativo da protoboard;
+                          Conecte a entrada do buzzer na porta digital 9 do arduino;
+                          Coloque um led branco na protoboard;
+                          Conecte o ânodo do led ao segmento negativo da protoboard;
+                          Conecte um resistor de 150Ω no cátodo do led; 
+                          Conecte o led no segmento positivo da protoboard(Passando pelo resistor);
+                            </code>
+                        </pre>
+                </div>
+            </div>
+            </div>
+            <div class="slider-item">
+                <div class="orgtrab2">
+                <div class="code-box">
+                    <pre>
+                         <code>
+                            #include &lt;TM1637Display.h&gt;
+                                #define CLK A4
+                                #define DIO A5
+                                #define Ba 12
+                                #define Bb 11
+                                #define Bc 10
+                                #define Rf 6
+                                #define buzzer 9
+                                
+                                int Ba_l = 0;
+                                int Bb_l = 0;
+                                int Bc_l = 0;
+                                
+                                int vb =0;
+                                    
+                                TM1637Display display(CLK, DIO);
+                                
+                                void setup(){
+                                  display.setBrightness(15);
+                                  pinMode(Ba, INPUT);
+                                  pinMode(Bb, INPUT);
+                                  pinMode(Bc, INPUT);
+                                
+                                  display.showNumberDec(0, false);
+                                  noTone(buzzer);
+                                  Serial.begin(9600);
+                                }
+                                
+                                void loop(){
+                                  int Rf_l = digitalRead(Rf);
+                                  if (Rf_l == 1){
+                                    for(int i = 2;i <= 300; i++){
+                                        display.showNumberDec(i, false);
+                                        int Ba_l = digitalRead(Ba);
+                                        int Bb_l = digitalRead(Bb);
+                                        int Bc_l = digitalRead(Bc);
+                                        delay(1);
+                                        if(Ba_l == 1 ){
+                                          vb = 1;
+                                          break;
+                                        }
+                                        if (Bb_l == 1 || Bc_l == 1){
+                                          break;
+                                        }
+                                      
+                                    }
+                                    if (vb == 0){
+                                      display.showNumberDec(8888, false);
+                                      tone(buzzer, 1000, 1000000);
+                                      delay(1000000);
+                                   }
+                                   else{
+                                    display.showNumberDec(0, false);
+                                    noTone(buzzer);
+                                    vb = 0;
+                                   }
+                                   
+                                  }
+                                
+                                }
+                            </code>
+                        </pre>
+                </div>
+            </div>
+            </div>
+          
+            </div>
+        </section>
     </section>
     <section id="Trab3">
         <div class="corpo-div-conteudo">
