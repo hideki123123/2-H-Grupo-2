@@ -29,15 +29,38 @@
     </header>
     <section id="Trab1">
         <div class="corpo-div-conteudo">
-            <h2 class="corpo-titulo"> Trabalho 1 </h2>
-            <br>
-            <p class="paragrafo-um">Aqui virá a introdução do seu trabalho.</p>
-            <br>
-            <p class="paragrafo-um">Aqui virá o desenvolvimento do seu trabalho.</p>
-            <br>
-            <p class="paragrafo-um">Aqui virá a conclusão do seu trabalho.</p>
+            <form>
+
+                Valor 1 : <input type="text" id="firstNumber" /><br>
+                Valor 2: <input type="text" id="secondNumber" /><br>
+            
+                <input type="button" onClick="multiplyBy()" Value="Enviar valores" /><br>
+              </form>
+              
+              <p>O resultado das operações é : <br> 
+                Soma:<span id = "soma"></span><br> 
+                Subtração:<span id = "sub"></span><br> 
+                Divisão:<span id = "divi"></span><br> 
+                Multiplicação:<span id = "multi"></span>
+              </p>
+              
+              
+              <script>
+                function multiplyBy()
+                {
+                  num1 = document.getElementById("firstNumber").value;
+                  num1 = parseInt(num1);
+            
+                  num2 = document.getElementById("secondNumber").value;
+                  num2 = parseInt(num2);
+            
+                  document.getElementById("soma").innerHTML = num1 + num2;
+                  document.getElementById("sub").innerHTML = num1 - num2;
+                  document.getElementById("divi").innerHTML = num1 / num2;
+                  document.getElementById("multi").innerHTML = num1 * num2;
+                }
+              </script>
         </div>
-        <img class="foto-corpo" src="../img/g-foto.png" alt="foto do corpo">
     </section>
     <section id="Trab2">
         <div class="corpo-div-conteudo">
